@@ -39,24 +39,48 @@ const MainChart = () => {
     areaDataList.push(value.value_area);
   });
 
+  const scales = {
+    yBar: {
+      type: "linear",
+      display: true,
+      position: "left",
+    },
+    yArea: {
+      type: "linear",
+      display: true,
+      position: "right",
+    },
+  };
+
+  const options: any = {
+    responsive: true,
+    interaction: {
+      mode: "index" as const,
+      intersect: false,
+    },
+    scales,
+  };
+
   const labels = Object.keys(mock.response);
   const dataset = [
     {
       type: "bar" as const,
-      label: "Bar Dataset",
+      label: "value_bar",
       backgroundColor: "rgb(121, 1, 145)",
       borderColor: "white",
       borderWidth: 2,
       data: barDataList,
+      yAxisID: "yBar",
     },
     {
       type: "line" as const,
-      label: "Area Dataset",
+      label: "value_area",
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgb(237, 200, 244)",
       borderWidth: 2,
       fill: true,
       data: areaDataList,
+      yAxisID: "yArea",
     },
   ];
 
@@ -69,7 +93,13 @@ const MainChart = () => {
     <div>
       <h2>!@@#!@#Chart</h2>
 
-      <Chart type="bar" data={data} width={1024} height={600} />
+      <Chart
+        type="bar"
+        data={data}
+        options={options}
+        width={1024}
+        height={600}
+      />
     </div>
   );
 };
