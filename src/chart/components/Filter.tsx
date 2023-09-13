@@ -1,4 +1,3 @@
-import { MouseEvent } from "react";
 import "../styles/filter.css";
 import { regions } from "../constants/constants";
 
