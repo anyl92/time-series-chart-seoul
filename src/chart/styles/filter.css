@@ -1,0 +1,16 @@
+.filter_box {
+  display: flex;
+  gap: 10px;
+}
+
+.filter_item {
+  width: 100px;
+  height: 30px;
+  border: 1px solid gray;
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}

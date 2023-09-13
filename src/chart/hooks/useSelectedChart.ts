@@ -2,7 +2,7 @@ import { MouseEvent, useRef, useState } from "react";
 
 import { Chart as ChartJS } from "chart.js";
 import { getElementAtEvent } from "react-chartjs-2";
-import { areaDataList, barDataList, idDataList } from "../constants/constants";
+import { areaDataList, barDataList, idDataList, regions } from "../constants/constants";
 
 const useSelectedChart = () => {
   const [region, setRegion] = useState<string>('');
@@ -47,7 +47,14 @@ const useSelectedChart = () => {
     },
   ];
 
-  return { chartRef, clickChartBar, dataset };
+  const handleClickFilter = (idx: number) => {
+    if (!idx) {
+      setRegion("");
+    }
+    setRegion(regions[idx]);
+  };
+
+  return { chartRef, clickChartBar, dataset, handleClickFilter };
 }
 
 export default useSelectedChart;
